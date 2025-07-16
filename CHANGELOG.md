@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-07-16
+
+### Added
+
+- GitHub Actions workflows for automated releases
+- Automatic VSIX file generation and release uploads
+- Build and release validation scripts
+- Deployment documentation
+
+### Changed
+
+- Updated to version 1.0.0 for stable release
+- Modernized GitHub Actions to use latest versions
+- Improved release process with automated workflows
+
 ## [0.0.5] - 2025-07-16
 
 ### Added

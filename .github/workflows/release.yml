@@ -7,6 +7,9 @@ on:
     tags:
       - "v*"
 
+permissions:
+  contents: write
+
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
@@ -37,7 +40,7 @@ jobs:
 
       - name: Create Release (for tag push)
         if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           name: ${{ steps.package-info.outputs.DISPLAY_NAME }} v${{ steps.package-info.outputs.VERSION }}
           body: |
@@ -61,11 +64,7 @@ jobs:
 
       - name: Upload to existing release
         if: github.event_name == 'release'
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v2
         with:
-          upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./${{ steps.package-info.outputs.FILENAME }}
-          asset_name: ${{ steps.package-info.outputs.FILENAME }}
-          asset_content_type: application/zip
+          files: |
+            ${{ steps.package-info.outputs.FILENAME }}
