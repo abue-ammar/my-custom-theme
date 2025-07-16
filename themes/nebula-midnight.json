@@ -3,7 +3,6 @@
   "type": "dark",
   "colors": {
     "accent": "#b080ff",
-    "activityBar.activeBackground": "#8e47ff40",
     "activityBar.activeBorder": "#a277ff",
     "activityBar.background": "#28242e",
     "activityBar.border": "#1a1820",

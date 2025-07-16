@@ -2,7 +2,7 @@
   "name": "nebula-midnight-theme",
   "displayName": "Nebula Midnight",
   "description": "A stunning dark theme with purple accents inspired by cosmic nebulae",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "publisher": "abue-ammar",
   "icon": "assets/icon.png",
   "license": "MIT",
@@ -31,7 +31,7 @@
   },
   "scripts": {
     "build": "vsce package",
-    "install": "npm run build && (code --install-extension nebula-midnight-theme-1.0.1.vsix || echo 'VS Code not available in this environment')",
+    "install": "npm run build && (code --install-extension nebula-midnight-theme-1.0.2.vsix || echo 'VS Code not available in this environment')",
     "publish": "vsce publish",
     "package": "vsce package",
     "setup": "./setup.sh",
