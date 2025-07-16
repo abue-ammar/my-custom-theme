@@ -54,14 +54,22 @@ echo ""
 
 # Install the theme
 echo "🚀 Installing the theme in VS Code..."
-code --install-extension nebula-midnight-theme-1.0.0.vsix
-
-if [ $? -ne 0 ]; then
-    echo "❌ Failed to install the theme"
-    exit 1
+if command -v code &> /dev/null; then
+    code --install-extension nebula-midnight-theme-1.0.0.vsix
+    
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to install the theme"
+        exit 1
+    fi
+    
+    echo "✅ Theme installed successfully!"
+else
+    echo "⚠️  VS Code command not found. Please install the .vsix file manually:"
+    echo "   1. Open VS Code"
+    echo "   2. Press Ctrl+Shift+P (or Cmd+Shift+P on Mac)"
+    echo "   3. Type 'Extensions: Install from VSIX'"
+    echo "   4. Select the file: nebula-midnight-theme-1.0.0.vsix"
 fi
-
-echo "✅ Theme installed successfully!"
 echo ""
 echo "🎉 Setup complete!"
 echo ""
