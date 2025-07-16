@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-07-16
+
+### Added
+
+- Extension icon (PNG format) for VS Code Marketplace display
+- Marketplace URL in README with badges
+
+### Fixed
+
+- Icon display in VS Code Marketplace (converted from SVG to PNG)
+
 ## [1.0.0] - 2025-07-16
 
 ### Added

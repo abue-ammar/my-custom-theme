@@ -55,7 +55,7 @@ echo ""
 # Install the theme
 echo "🚀 Installing the theme in VS Code..."
 if command -v code &> /dev/null; then
-    code --install-extension nebula-midnight-theme-1.0.0.vsix
+    code --install-extension nebula-midnight-theme-1.0.1.vsix
     
     if [ $? -ne 0 ]; then
         echo "❌ Failed to install the theme"
