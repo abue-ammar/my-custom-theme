@@ -1,4 +1,4 @@
-name: Release VS Code Extension
+name: Manual Release
 
 on:
   release:
@@ -57,6 +57,10 @@ jobs:
             ```bash
             code --install-extension ${{ steps.package-info.outputs.FILENAME }}
             ```
+
+            ### Manual Release
+            - Created manually via GitHub release or version tag
+            - Built with Node.js 22 for compatibility
           files: |
             ${{ steps.package-info.outputs.FILENAME }}
           draft: false

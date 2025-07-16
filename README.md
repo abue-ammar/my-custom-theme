@@ -90,26 +90,54 @@ npm run build
 
 ## 🚀 Releases
 
-This project uses GitHub Actions for automated releases. Users can download the latest `.vsix` file from the [releases page](https://github.com/abue-ammar/nebula-midnight-theme/releases).
+This project uses GitHub Actions for automated releases. Every time you push to the `master` branch, a new release is automatically created with the latest `.vsix` file.
 
-### Creating a Release
+Users can download the latest `.vsix` file from the [releases page](https://github.com/abue-ammar/nebula-midnight-theme/releases).
 
-#### Method 1: Using GitHub Releases UI
+### How It Works
 
-1. Go to the [releases page](https://github.com/abue-ammar/nebula-midnight-theme/releases)
-2. Click "Create a new release"
-3. Create a new tag (e.g., `v0.0.6`)
-4. Fill in the release title and description
-5. Click "Publish release"
+1. **Push to master** - Any push to the master branch triggers the build workflow
+2. **Automatic build** - The extension is built using Node.js 22
+3. **Automatic release** - A new GitHub release is created with the current version from `package.json`
+4. **Download ready** - Users can immediately download the `.vsix` file
 
-#### Method 2: Using Git Tags
+### Creating a New Version
+
+1. Update the version in `package.json`:
+
+   ```json
+   {
+     "version": "1.0.1"
+   }
+   ```
+
+2. Update any version references in scripts and files
+
+3. Commit and push to master:
+
+   ```bash
+   git add .
+   git commit -m "Bump version to 1.0.1"
+   git push origin master
+   ```
+
+4. The release will be created automatically!
+
+### Manual Release (Alternative)
+
+You can still create manual releases using:
+
+#### Method 1: Using the release script
 
 ```bash
-# Update version in package.json first
-npm version patch  # or minor, major
+./release.sh
+```
 
-# Push the tag
-git push origin v0.0.6
+#### Method 2: Using Git tags
+
+```bash
+git tag v1.0.1
+git push origin v1.0.1
 ```
 
 The GitHub Action will automatically:

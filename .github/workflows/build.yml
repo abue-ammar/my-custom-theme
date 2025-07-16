@@ -1,4 +1,4 @@
-name: Build and Test
+name: Build and Release
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [master, main]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -29,9 +29,47 @@ jobs:
       - name: Build extension
         run: npm run build
 
+      - name: Get package info
+        id: package-info
+        run: |
+          echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+          echo "NAME=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+          echo "FILENAME=$(node -p "require('./package.json').name")-$(node -p "require('./package.json').version").vsix" >> $GITHUB_OUTPUT
+          echo "DISPLAY_NAME=$(node -p "require('./package.json').displayName")" >> $GITHUB_OUTPUT
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
           name: vsix-package
           path: "*.vsix"
           retention-days: 30
+
+      - name: Create Release (on push to master)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.package-info.outputs.VERSION }}
+          name: ${{ steps.package-info.outputs.DISPLAY_NAME }} v${{ steps.package-info.outputs.VERSION }}
+          body: |
+            ## 🌌 ${{ steps.package-info.outputs.DISPLAY_NAME }} v${{ steps.package-info.outputs.VERSION }}
+
+            Download the `.vsix` file below and install it in VS Code:
+
+            1. Open VS Code
+            2. Go to Extensions (Ctrl+Shift+X)
+            3. Click on the "..." menu and select "Install from VSIX..."
+            4. Select the downloaded `.vsix` file
+
+            ### Installation via Command Line
+            ```bash
+            code --install-extension ${{ steps.package-info.outputs.FILENAME }}
+            ```
+
+            ### What's New
+            - Automatically built and released from commit ${{ github.sha }}
+            - Built with Node.js 22 for compatibility
+            - Ready for VS Code installation
+          files: |
+            ${{ steps.package-info.outputs.FILENAME }}
+          draft: false
+          prerelease: false
