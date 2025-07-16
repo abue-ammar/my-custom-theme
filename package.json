@@ -1,18 +1,49 @@
 {
-  "name": "my-custom-theme",
-  "displayName": "My Custom Theme",
-  "description": "A theme exported from VSCode",
+  "name": "nebula-midnight-theme",
+  "displayName": "Nebula Midnight",
+  "description": "A stunning dark theme with purple accents inspired by cosmic nebulae",
   "version": "0.0.5",
   "publisher": "ammar",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abue-ammar/nebula-midnight-theme"
+  },
+  "bugs": {
+    "url": "https://github.com/abue-ammar/nebula-midnight-theme/issues"
+  },
+  "homepage": "https://github.com/abue-ammar/nebula-midnight-theme#readme",
+  "keywords": [
+    "theme",
+    "dark",
+    "purple",
+    "nebula",
+    "cosmic",
+    "midnight",
+    "color-theme"
+  ],
+  "categories": [
+    "Themes"
+  ],
   "engines": {
-    "vscode": "^1.0.0"
+    "vscode": "^1.74.0"
+  },
+  "scripts": {
+    "build": "vsce package",
+    "install": "npm run build && code --install-extension nebula-midnight-theme-0.0.5.vsix",
+    "publish": "vsce publish",
+    "package": "vsce package",
+    "setup": "./setup.sh"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^2.22.0"
   },
   "contributes": {
     "themes": [
       {
-        "label": "My Custom Theme",
+        "label": "Nebula Midnight",
         "uiTheme": "vs-dark",
-        "path": "./themes/my-theme.json"
+        "path": "./themes/nebula-midnight.json"
       }
     ]
   }
