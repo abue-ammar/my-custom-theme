@@ -12,7 +12,7 @@ A stunning dark theme for Visual Studio Code with purple accents inspired by cos
 
 ## 🎨 Preview
 
-![Nebula Midnight Theme Preview](https://raw.githubusercontent.com/abue-ammar/nebula-midnight-theme/master/assets/preview.png)
+![Nebula Midnight Theme Preview](https://raw.githubusercontent.com/abue-ammar/nebula-midnight-theme/refs/heads/master/assets/Screenshot%20From%202025-07-16%2014-19-07.png)
 
 ## 🚀 Installation
 
