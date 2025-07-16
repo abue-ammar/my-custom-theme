@@ -33,7 +33,8 @@
     "install": "npm run build && code --install-extension nebula-midnight-theme-0.0.5.vsix",
     "publish": "vsce publish",
     "package": "vsce package",
-    "setup": "./setup.sh"
+    "setup": "./setup.sh",
+    "release": "./release.sh"
   },
   "devDependencies": {
     "@vscode/vsce": "^2.22.0"

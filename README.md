@@ -88,6 +88,42 @@ npm run build
 - `npm run publish` - Publish the theme to the VS Code Marketplace
 - `npm run package` - Alternative command to package the theme
 
+## 🚀 Releases
+
+This project uses GitHub Actions for automated releases. Users can download the latest `.vsix` file from the [releases page](https://github.com/abue-ammar/nebula-midnight-theme/releases).
+
+### Creating a Release
+
+#### Method 1: Using GitHub Releases UI
+
+1. Go to the [releases page](https://github.com/abue-ammar/nebula-midnight-theme/releases)
+2. Click "Create a new release"
+3. Create a new tag (e.g., `v0.0.6`)
+4. Fill in the release title and description
+5. Click "Publish release"
+
+#### Method 2: Using Git Tags
+
+```bash
+# Update version in package.json first
+npm version patch  # or minor, major
+
+# Push the tag
+git push origin v0.0.6
+```
+
+The GitHub Action will automatically:
+
+- Build the `.vsix` file
+- Create a release (if using tag method)
+- Upload the `.vsix` file to the release
+- Generate installation instructions
+
+### Automated Workflows
+
+- **Build & Test**: Runs on every push and pull request to ensure the theme builds correctly
+- **Release**: Triggered on new releases or version tags, automatically builds and uploads the `.vsix` file
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request. Here's how you can contribute:

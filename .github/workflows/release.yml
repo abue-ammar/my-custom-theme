@@ -1,0 +1,71 @@
+name: Release VS Code Extension
+
+on:
+  release:
+    types: [published]
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build extension
+        run: npm run build
+
+      - name: Get package info
+        id: package-info
+        run: |
+          echo "VERSION=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+          echo "NAME=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
+          echo "FILENAME=$(node -p "require('./package.json').name")-$(node -p "require('./package.json').version").vsix" >> $GITHUB_OUTPUT
+          echo "DISPLAY_NAME=$(node -p "require('./package.json').displayName")" >> $GITHUB_OUTPUT
+
+      - name: Create Release (for tag push)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          name: ${{ steps.package-info.outputs.DISPLAY_NAME }} v${{ steps.package-info.outputs.VERSION }}
+          body: |
+            ## 🌌 ${{ steps.package-info.outputs.DISPLAY_NAME }} v${{ steps.package-info.outputs.VERSION }}
+
+            Download the `.vsix` file below and install it in VS Code:
+
+            1. Open VS Code
+            2. Go to Extensions (Ctrl+Shift+X)
+            3. Click on the "..." menu and select "Install from VSIX..."
+            4. Select the downloaded `.vsix` file
+
+            ### Installation via Command Line
+            ```bash
+            code --install-extension ${{ steps.package-info.outputs.FILENAME }}
+            ```
+          files: |
+            ${{ steps.package-info.outputs.FILENAME }}
+          draft: false
+          prerelease: false
+
+      - name: Upload to existing release
+        if: github.event_name == 'release'
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./${{ steps.package-info.outputs.FILENAME }}
+          asset_name: ${{ steps.package-info.outputs.FILENAME }}
+          asset_content_type: application/zip
