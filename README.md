@@ -1,5 +1,10 @@
 # Nebula Midnight Theme
 
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/abue-ammar.nebula-midnight-theme?style=for-the-badge&logo=visual-studio-code&logoColor=white&label=VS%20Code%20Marketplace)](https://marketplace.visualstudio.com/items?itemName=abue-ammar.nebula-midnight-theme)
+[![Downloads](https://img.shields.io/visual-studio-marketplace/d/abue-ammar.nebula-midnight-theme?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=abue-ammar.nebula-midnight-theme)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/abue-ammar.nebula-midnight-theme?style=for-the-badge&logo=visual-studio-code&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=abue-ammar.nebula-midnight-theme)
+[![GitHub](https://img.shields.io/github/license/abue-ammar/nebula-midnight-theme?style=for-the-badge)](https://github.com/abue-ammar/nebula-midnight-theme/blob/master/LICENSE)
+
 A stunning dark theme for Visual Studio Code with purple accents inspired by cosmic nebulae. This theme provides a comfortable coding experience with carefully chosen colors that reduce eye strain while maintaining excellent readability.
 
 ## 🌟 Features
@@ -22,6 +27,9 @@ A stunning dark theme for Visual Studio Code with purple accents inspired by cos
 2. Go to Extensions (Ctrl+Shift+X)
 3. Search for "Nebula Midnight"
 4. Click Install
+
+**Or install directly from the marketplace:**
+[📦 Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=abue-ammar.nebula-midnight-theme)
 
 ### From VSIX file
 
